@@ -19,11 +19,9 @@ var winCount = 0
 var loseCount = 0
 
 var correct = 0
-var timeLeft = 2
+var timeLeft = 40
 if (localStorage.getItem('winCount') === null) { winCount = 0 } else { winCount = localStorage.getItem('winCount') }
 if (localStorage.getItem('loseCount') === null) { loseCount = 0 } else { loseCount = localStorage.getItem('loseCount') }
-
-
 
 button.addEventListener('click', function () {
     section.style.display = 'block'
@@ -48,15 +46,12 @@ button.addEventListener('click', function () {
 })
 
 guess.addEventListener('input', function () {
-
-
     if (guess.value === word[0]) { first.innerHTML = word[0]; correct++ }
     else if (guess.value === word[1]) { second.innerHTML = word[1], correct++ }
     else if (guess.value === word[2]) { third.innerHTML = word[2], correct++ }
     else if (guess.value === word[3]) { fourth.innerHTML = word[3], correct++ }
     else if (guess.value === word[4]) { fifth.innerHTML = word[4], correct++ }
-    else (alert('wrong!!'))
-        ;
+    else (alert('wrong!!'));
     guess.value = null
     console.log(correct)
     if (correct == '5') {
