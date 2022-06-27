@@ -1,0 +1,24 @@
+ section {
+     display: none;
+     text-align: center;
+ }
+
+ #win,
+ #lose {
+     display: none;
+     text-align: center;
+ }
+
+ body {
+     display: flex;
+     justify-content: center;
+     background-color: rgb(211, 223, 211);
+ }
+
+ button {
+     box-shadow: 5px 5px grey;
+ }
+
+ button:active {
+     background-color: yellow;
+ }
