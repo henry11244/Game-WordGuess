@@ -11,18 +11,40 @@ var third = document.querySelector('#third')
 var fourth = document.querySelector('#fourth')
 var fifth = document.querySelector('#fifth')
 var timer = document.querySelector('#timer')
+var totalWins = document.querySelector('.totalWins')
+var totalwins = document.querySelector('.totalwins')
+var totallose = document.querySelector('.totallose')
+var totalLose = document.querySelector('.totalLose')
+var winCount = 0
+var loseCount = 0
+
 var correct = 0
-var timeLeft = 20
+var timeLeft = 2
+if (localStorage.getItem('winCount') === null) { winCount = 0 } else { winCount = localStorage.getItem('winCount') }
+if (localStorage.getItem('loseCount') === null) { loseCount = 0 } else { loseCount = localStorage.getItem('loseCount') }
 
-// const letterCount = Array.from(Array(26)).map((e, i) => i + 65);
-
-// // Capitalized letters array
-// const alphabetCap = letterCount.map((x) => String.fromCharCode(x));
 
 
 button.addEventListener('click', function () {
     section.style.display = 'block'
     button.style.display = 'none'
+    var interval = setInterval(function (x) {
+        if (timeLeft > 0) {
+            timeLeft--; timer.innerHTML = "Timeleft: " + timeLeft
+        }
+        else if (correct == '5') { clearInterval(interval); }
+        else {
+            totalwins.innerHTML = winCount;
+            totallose.innerHTML = loseCount;
+            loseCount++;
+            lose.style.display = 'block';
+            section.style.display = 'none';
+            localStorage.setItem('loseCount', loseCount);
+            clearInterval(interval);
+
+        }
+    }, 1000)
+
 })
 
 guess.addEventListener('input', function () {
@@ -38,21 +60,15 @@ guess.addEventListener('input', function () {
     guess.value = null
     console.log(correct)
     if (correct == '5') {
-        clearInterval(interval)
-        setInterval(function () {
+        winCount++;
+        var otherInterval = setInterval(function () {
             win.style.display = 'block';
-            section.style.display = 'none'
+            section.style.display = 'none';
+            localStorage.setItem('winCount', winCount)
+            totalWins.innerHTML = winCount;
+            totalLose.innerHTML = loseCount;
         }, 1000)
     }
 })
 
-var interval = setInterval(function (x) {
-    if (timeLeft > 0) {
-        timeLeft--; timer.innerHTML = "Timeleft: " + timeLeft
-    } else {
-        lose.style.display = 'block';
-        section.style.display = 'none'
-        clearInterval(interval)
-    }
-}, 1000)
 
