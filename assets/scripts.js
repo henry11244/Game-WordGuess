@@ -19,7 +19,7 @@ var winCount = 0
 var loseCount = 0
 
 var correct = 0
-var timeLeft = 30
+var timeLeft = 2
 if (localStorage.getItem('winCount') === null) { winCount = 0 } else { winCount = localStorage.getItem('winCount') }
 if (localStorage.getItem('loseCount') === null) { loseCount = 0 } else { loseCount = localStorage.getItem('loseCount') }
 
