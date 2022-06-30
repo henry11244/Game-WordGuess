@@ -1,15 +1,12 @@
 var word = ['r', 'u', 's', 't', 'y']
 var guess = document.querySelector('#guess')
-var button = document.querySelector('button')
+var body = document.querySelector('body')
+var start = document.querySelector('#start')
 var section = document.querySelector('section')
 var h1 = document.querySelector('h1')
+var answer = document.querySelector('#answer')
 var win = document.querySelector('#win')
 var lose = document.querySelector('#lose')
-var first = document.querySelector('#first')
-var second = document.querySelector('#second')
-var third = document.querySelector('#third')
-var fourth = document.querySelector('#fourth')
-var fifth = document.querySelector('#fifth')
 var timer = document.querySelector('#timer')
 var totalWins = document.querySelector('.totalWins')
 var totalwins = document.querySelector('.totalwins')
@@ -23,9 +20,11 @@ var timeLeft = 40
 if (localStorage.getItem('winCount') === null) { winCount = 0 } else { winCount = localStorage.getItem('winCount') }
 if (localStorage.getItem('loseCount') === null) { loseCount = 0 } else { loseCount = localStorage.getItem('loseCount') }
 
-button.addEventListener('click', function () {
+
+
+start.addEventListener('click', function () {
     section.style.display = 'block'
-    button.style.display = 'none'
+    start.style.display = 'none'
     var interval = setInterval(function (x) {
         if (timeLeft > 0) {
             timeLeft--; timer.innerHTML = "Timeleft: " + timeLeft
@@ -45,15 +44,12 @@ button.addEventListener('click', function () {
 
 })
 
-guess.addEventListener('input', function () {
-    if (guess.value === word[0]) { first.innerHTML = word[0]; correct++ }
-    else if (guess.value === word[1]) { second.innerHTML = word[1], correct++ }
-    else if (guess.value === word[2]) { third.innerHTML = word[2], correct++ }
-    else if (guess.value === word[3]) { fourth.innerHTML = word[3], correct++ }
-    else if (guess.value === word[4]) { fifth.innerHTML = word[4], correct++ }
-    else (alert('wrong!!'));
-    guess.value = null
-    console.log(correct)
+document.addEventListener('keydown', function (e) {
+    var key = e.key.toLowerCase();
+    console.log(key)
+    for (var i = 0; i < word.length; i++) {
+        if (key === word[i]) { answer.children[i].innerHTML = word[i]; correct++ }
+    };
     if (correct == '5') {
         winCount++;
         var otherInterval = setInterval(function () {

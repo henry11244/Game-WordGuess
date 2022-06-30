@@ -11,23 +11,21 @@
 
 <body>
 
-    <button>Start</button>
+    <button id="start">Start</button>
     <section>
         <h1>
             <h2 id="timer"></h2>
-            <p>Please type the letter corresponding to your guess in the box below</p>
+            <p>Please type the letter corresponding to your guess</p>
             <br>
-            <span id="first">_</span>
-            <span id="second">_</span>
-            <span id="third">_</span>
-            <span id="fourth">_</span>
-            <span id="fifth">_</span>
-
+            <div id="answer">
+                <span id="Line0">_</span>
+                <span id="Line1">_</span>
+                <span id="Line2">_</span>
+                <span id="Line3">_</span>
+                <span id="Line4">_</span>
+            </div>
         </h1>
-        <br>
-        <br>
-        <input type="text" id="guess">
-        <br>
+
         <button onClick="window.location.reload();">Reset</button>
 
     </section>
